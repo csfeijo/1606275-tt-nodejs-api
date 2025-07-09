@@ -1,11 +1,10 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import defaultRoutes from './routes/defaultroutes';
 
 const app = express();
 const porta = 3030;
 
-app.get('/', (req: Request, res: Response): void => {
-  res.send('Executando a NODE JS API REST');
-});
+app.use(defaultRoutes);
 
 app.listen(porta, () => {
   console.log(`Servidor rodando na porta ${porta}`);
