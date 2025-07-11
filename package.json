@@ -9,8 +9,9 @@
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist"
   },
-   "dependencies": {
-    "express": "^5.1.0"
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.14.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
