@@ -2,11 +2,18 @@ import { Request, Response } from 'express';
 import conexao from '../services/connection';
 import { ResultSetHeader } from 'mysql2';
 
-export const listaDepartamentos = async (req: Request, res: Response) => {
+export const listaDepartamentos = async (req: Request, res: Response): Promise<void> => {
   console.log('GET departamentos');
 
   const [rows] = await conexao.query('SELECT * FROM DEPARTAMENTOS ORDER BY nome');
   res.json(rows);  
+}
+
+export const listaDepartamento = async (req: Request, res: Response): Promise<void> => {
+  const {id_departamento} = req.params;
+
+  const [rows] = await conexao.execute('SELECT * FROM DEPARTAMENTOS WHERE id_departamento = ?', [id_departamento]);
+  res.json(rows);
 }
 
 export const insereDepartamento = async (req: Request, res: Response): Promise<void> => {
